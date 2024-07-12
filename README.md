@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently studying master's of computer science and information technology.<br>🌱 I’m currently learning MERN Stack.<br>💬 Highly Sarcastic!<br>⚡ Better Learner, Better Listener!<br>💫 Always Energetic.
+🔭 I’m currently studying master's of computer science and information technology.<br>🌱 I’m currently learning Next, Typescript.<br>💬 Highly Sarcastic!<br>⚡ Better Learner, Better Listener!<br>💫 Always Energetic.<br>✨Javascript Developer
 
 
 ## 🌐 Socials:
