@@ -1,3 +1,5 @@
+![MasterHead](https://user-images.githubusercontent.com/10498744/210012254-234538ff-d198-48aa-8964-37e6fd45d227.gif)
+
 # 💫 About Me:
 🔭 I’m currently studying master's of computer science and information technology.<br>👯 I’m looking to collaborate on hackathons.<br>🤝 I’m looking for help with open source contributions.<br>🌱 I’m currently learning next.js and typescript.<br>💬 Ask me about MERN stack.<br>⚡ Javascript Developer
 
