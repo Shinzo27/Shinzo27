@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="230" viewBox="0 0 1000 230" fill="none">
+  <!-- Editorial header · dark (charcoal & cream & periwinkle) -->
+  <rect width="1000" height="230" fill="#0E0E0C"/>
+  <path d="M28 20v14M21 27h14" stroke="#3A3A34" stroke-width="1.5"/>
+  <path d="M972 20v14M965 27h14" stroke="#3A3A34" stroke-width="1.5"/>
+  <text x="28" y="58" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="3" fill="#8F8E83">SURAT, IN — OPEN TO WORK</text>
+  <text x="972" y="58" text-anchor="end" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="3" fill="#8F8E83">EST. 2024</text>
+  <text x="28" y="132" font-family="Georgia,'Times New Roman',serif" font-size="58" fill="#F2F1EA">Pratham Patel<tspan font-style="italic" fill="#8B9CFF">.</tspan></text>
+  <text x="28" y="172" font-family="Menlo,Consolas,monospace" font-size="14" letter-spacing="2.5" fill="#8B9CFF">AI-NATIVE FULL-STACK DEVELOPER</text>
+  <rect x="28" y="196" width="944" height="1" fill="#232320"/>
+  <text x="28" y="218" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="1.5" fill="#6E6D66">shipped with agents · reviewed by a human</text>
+  <rect x="892" y="76" width="80" height="80" rx="18" fill="#8B9CFF"/>
+  <text x="932" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="40" font-style="italic" fill="#0E0E0C">P.</text>
+</svg>
