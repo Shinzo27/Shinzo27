@@ -20,29 +20,39 @@ def fetch(url: str) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": "profile-stats-gen"})
     if TOKEN:
         req.add_header("Authorization", f"Bearer {TOKEN}")
+    req.add_header("Accept", "application/vnd.github+json")
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.load(r)
+
+
+def count_commits() -> int | None:
+    """Lifetime public commits via the commit search API (None on failure)."""
+    try:
+        data = fetch(
+            f"https://api.github.com/search/commits?q=author:{USER}&per_page=1"
+        )
+        return int(data.get("total_count", 0))
+    except Exception as e:
+        print(f"commit count failed: {e}", file=sys.stderr)
+        return None
 
 
 def collect() -> dict:
     user = fetch(API)
     repos = fetch(REPOS)
-    stars = sum(r.get("stargazers_count", 0) for r in repos)
     followers = user.get("followers", 0)
     public_repos = user.get("public_repos", len(repos))
-    top = sorted(
-        (r for r in repos if r["name"] != USER),  # exclude the profile repo
-        key=lambda r: r.get("stargazers_count", 0),
+    commits = count_commits()
+    recent = sorted(
+        (r for r in repos if r["name"] != USER),
+        key=lambda r: r.get("pushed_at", ""),
         reverse=True,
     )[:3]
-    latest = max((r.get("pushed_at", "") for r in repos), default="")
-    when = latest[:10] if latest else "—"
     return {
         "repos": public_repos,
+        "commits": commits,
         "followers": followers,
-        "stars": stars,
-        "top": [(r["name"], r.get("stargazers_count", 0)) for r in top],
-        "pushed": when,
+        "recent": [(r["name"], (r.get("pushed_at", "") or "")[:10]) for r in recent],
     }
 
 
@@ -62,28 +72,29 @@ def fmt(n: int) -> str:
     return f"{n:,}"
 
 
-def render(d: dict, p: dict) -> str:
+def render(d: dict, p: dict, generated: str) -> str:
+    commits = fmt(d["commits"]) if d["commits"] is not None else "—"
     rows = "".join(
         f'<text x="612" y="{214 + i * 40}" font-family="Menlo,Consolas,monospace" '
         f'font-size="15" fill="{p["ink"]}">· {name}</text>'
         f'<text x="944" y="{214 + i * 40}" text-anchor="end" font-family="Georgia,serif" '
-        f'font-size="16" font-style="italic" fill="{p["accent"]}">{stars}★</text>'
-        for i, (name, stars) in enumerate(d["top"])
+        f'font-size="16" font-style="italic" fill="{p["accent"]}">{date}</text>'
+        for i, (name, date) in enumerate(d["recent"])
     )
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" fill="none">
   <rect width="1000" height="420" rx="10" fill="{p["bg"]}"/>
   <rect x="24" y="24" width="952" height="372" rx="6" fill="none" stroke="{p["hair"]}" stroke-width="1"/>
 
   <text x="56" y="76" font-family="Menlo,Consolas,monospace" font-size="12" letter-spacing="3" fill="{p["muted"]}">GITHUB — THE NUMBERS</text>
-  <text x="944" y="76" text-anchor="end" font-family="Menlo,Consolas,monospace" font-size="12" fill="{p["muted"]}">updated {d["pushed"]}</text>
+  <text x="944" y="76" text-anchor="end" font-family="Menlo,Consolas,monospace" font-size="12" fill="{p["muted"]}">generated {generated}</text>
   <rect x="56" y="94" width="888" height="1" fill="{p["hair"]}"/>
 
   <!-- big numbers -->
   <text x="56" y="192" font-family="Georgia,serif" font-size="64" fill="{p["ink"]}">{fmt(d["repos"])}</text>
   <text x="56" y="224" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["muted"]}">REPOSITORIES</text>
 
-  <text x="286" y="192" font-family="Georgia,serif" font-size="64" fill="{p["ink"]}">{fmt(d["stars"])}</text>
-  <text x="286" y="224" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["muted"]}">STARS EARNED</text>
+  <text x="286" y="192" font-family="Georgia,serif" font-size="64" fill="{p["ink"]}">{commits}</text>
+  <text x="286" y="224" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["muted"]}">COMMITS · PUBLIC</text>
 
   <text x="486" y="192" font-family="Georgia,serif" font-size="64" fill="{p["ink"]}">{fmt(d["followers"])}</text>
   <text x="486" y="224" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["muted"]}">FOLLOWERS</text>
@@ -92,8 +103,8 @@ def render(d: dict, p: dict) -> str:
   <text x="56" y="290" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["accent"]}">NOW SHIPPING</text>
   <text x="56" y="318" font-family="Menlo,Consolas,monospace" font-size="15" fill="{p["ink"]}">intervue-ai <tspan fill="{p["muted"]}">·</tspan> nirvitta <tspan fill="{p["muted"]}">·</tspan> rag-platform <tspan fill="{p["muted"]}">·</tspan> rn-habit-tracker</text>
 
-  <!-- top starred -->
-  <text x="612" y="164" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["accent"]}">MOST STARRED</text>
+  <!-- recent activity -->
+  <text x="612" y="164" font-family="Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="{p["accent"]}">RECENTLY PUSHED</text>
   <rect x="612" y="176" width="332" height="1" fill="{p["hair"]}"/>
   {rows}
 
@@ -107,9 +118,10 @@ def render(d: dict, p: dict) -> str:
 
 def main() -> None:
     data = collect()
+    generated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     os.makedirs(OUT_DIR, exist_ok=True)
     for variant, palette in PALETTES.items():
-        svg = render(data, palette)
+        svg = render(data, palette, generated)
         path = os.path.abspath(os.path.join(OUT_DIR, f"stats-{variant}.svg"))
         with open(path, "w", encoding="utf-8") as f:
             f.write(svg)
