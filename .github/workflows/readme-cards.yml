@@ -1,0 +1,49 @@
+name: Render README cards
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily, 03:17 UTC — 08:47 IST
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "fonts/**"
+      - "requirements.txt"
+      - ".github/workflows/readme-cards.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: readme-cards
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install font tooling
+        run: pip install -r requirements.txt
+
+      - name: Refresh contribution calendar
+        run: python scripts/fetch_contributions.py
+
+      # Fails the run (instead of shipping a broken card) if any string
+      # overflows its box or two labels collide.
+      - name: Render cards, light + dark
+        run: python scripts/render_readme_cards.py
+
+      - name: Commit refreshed cards
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "cards: refresh from contribution calendar"
+          file_pattern: "cards/*.svg data/contributions.json"

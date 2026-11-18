@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+png/
+page.png
+preview.html
+stitch.py
+prev2.py
+validate.py
+probe*.py
+fonts/.
+cards/.
