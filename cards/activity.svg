@@ -60,9 +60,9 @@ text{transform-box:fill-box;}
 <rect x="472.0" y="182.5" width="28" height="17.5" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.850s both"/>
 <text x="486.0" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.95s">Oct</text>
 <text x="486.0" y="174.5" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.20s">21</text>
-<rect x="515.8" y="106.9" width="28" height="93.1" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.905s both"/>
+<rect x="515.8" y="105.3" width="28" height="94.7" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.905s both"/>
 <text x="529.8" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:1.01s">Nov</text>
-<text x="529.8" y="98.9" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.25s">112</text>
+<text x="529.8" y="97.3" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.25s">114</text>
 <line x1="34.0" y1="200.0" x2="543.8" y2="200.0" stroke="#101010" stroke-width="1.2" class="draw" style="--len:525.5999999999999;animation-delay:.2s" stroke-dasharray="525.5999999999999"/>
 <line x1="586.0" y1="40.0" x2="586.0" y2="218.0" stroke="#DDDBD2" stroke-width="1" class="draw" style="--len:178;animation-delay:.5s" stroke-dasharray="178"/>
 <text x="620.0" y="80.0" font-family="serif" font-size="30" fill="#101010" class="riseSm" style="animation-delay:0.55s">04</text>
