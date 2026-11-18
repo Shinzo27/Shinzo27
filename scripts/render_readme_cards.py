@@ -11,7 +11,16 @@ counters), so `prefers-reduced-motion` can switch all of it off.
     STATIC=1 python scripts/render_readme_cards.py   # final frame only
 
 Layout is measured, not guessed: every string is checked against the width of
-its box using the real (subset) font metrics, and the run fails if it overflows.
+its box using the real (subset) font metrics, and the run fails if it overflows
+or two labels collide, so a bad data value can never ship a broken card.
+
+Where to edit:
+  P       the name, links, and copy that appear inside the cards
+  TILES   the three linked tiles (label, counter, caption, destination)
+  REPOS   the three featured repo cards
+  THEMES  the palette — it mirrors --bg/--fg/--accent in the portfolio
+The README markdown holds the layout: one <picture> per full-width card and
+three `<a><img width="32.5%"></a>` per row, light and dark.
 """
 from __future__ import annotations
 
