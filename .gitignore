@@ -13,3 +13,9 @@ preview-light.html
 wfcheck.py
 m.py
 stitch.py
+render-*.html
+render-*.png
+page-*.png
+make_preview.py
+sample.py
+chk.py
