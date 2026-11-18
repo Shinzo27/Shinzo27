@@ -9,3 +9,7 @@ validate.py
 probe*.py
 fonts/.
 cards/.
+preview-light.html
+wfcheck.py
+m.py
+stitch.py

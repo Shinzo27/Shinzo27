@@ -366,8 +366,9 @@ REPO_W, REPO_H = 270, 140
 
 
 def card_hero(t: dict, d: dict) -> Svg:
-    s = Svg(W, 330, t)
+    s = Svg(W, 346, t)
     left_w = 430
+    NAME = 96
 
     s.raw(
         f'<g class="fade" style="animation-delay:.05s">'
@@ -380,11 +381,12 @@ def card_hero(t: dict, d: dict) -> Svg:
            t["muted"], tracking=1.6, cls="fade", style="animation-delay:.15s",
            maxw=left_w, where="hero/eyebrow")
 
-    s.text(PAD - 3, 132, P["name1"], "serif", 84, t["ink"], tracking=-1.1,
+    # the name rises one line at a time; a blue band sweeps the surname
+    s.text(PAD - 3, 144, P["name1"], "serif", NAME, t["ink"], tracking=-1.2,
            cls="rise", style="animation-delay:.22s", maxw=left_w + 40, where="hero/name1")
     s.add_def(
-        f'<clipPath id="clipname"><text x="{PAD - 3}" y="216" font-family="serif" '
-        f'font-size="84" letter-spacing="-1.1">{P["name2"]}</text></clipPath>'
+        f'<clipPath id="clipname"><text x="{PAD - 3}" y="240" font-family="serif" '
+        f'font-size="{NAME}" letter-spacing="-1.2">{P["name2"]}</text></clipPath>'
         f'<linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">'
         f'<stop offset="0" stop-color="{t["accent"]}" stop-opacity="0"/>'
         f'<stop offset=".42" stop-color="{t["accent"]}" stop-opacity=".55"/>'
@@ -393,46 +395,46 @@ def card_hero(t: dict, d: dict) -> Svg:
     )
     s.raw(
         f'<g class="rise" style="animation-delay:.38s">'
-        f'<text x="{PAD - 3}" y="216" font-family="serif" font-size="84" letter-spacing="-1.1" '
-        f'fill="{t["ink"]}">{P["name2"]}</text></g>'
+        f'<text x="{PAD - 3}" y="240" font-family="serif" font-size="{NAME}" '
+        f'letter-spacing="-1.2" fill="{t["ink"]}">{P["name2"]}</text></g>'
     )
     s.raw(
         f'<g clip-path="url(#clipname)">'
-        f'<rect x="{PAD - 220}" y="130" width="200" height="110" fill="url(#shine)" '
+        f'<rect x="{PAD - 240}" y="152" width="220" height="118" fill="url(#shine)" '
         f'style="animation:sweep 5.6s cubic-bezier(.5,0,.3,1) 2.2s infinite"/></g>'
     )
 
-    rule_y = 248
-    s.line(PAD, rule_y, PAD + 286, rule_y, t["ink"], 1.4, cls="draw",
+    s.line(PAD, 270, PAD + 286, 270, t["ink"], 1.4, cls="draw",
            style="--len:286;animation-delay:.7s", extra='stroke-dasharray="286"')
-    s.text(PAD, 278, "AI-native full-stack developer.", "serif", 22, t["ink"],
+    s.text(PAD, 300, "AI-native full-stack developer.", "serif", 23, t["ink"],
            cls="riseSm", style="animation-delay:.8s", maxw=left_w, where="hero/tagline")
-    s.text(PAD, 302, "SPEC → DELEGATE → REVIEW → SHIP", "mono", 10, t["muted"],
+    s.text(PAD, 322, "SPEC → DELEGATE → REVIEW → SHIP", "mono", 10, t["muted"],
            tracking=1.5, cls="riseSm", style="animation-delay:.92s",
            maxw=left_w, where="hero/flow")
 
-    px, py, pw, ph = 500, 34, W - PAD - 500, 262
+    px, py, pw, ph = 500, 34, W - PAD - 500, 236
     s.rect(px, py, pw, ph, fill=t["surface"], rx=6, stroke=t["border"], sw=1,
            cls="fade", style="animation-delay:.5s")
     ix, iw = px + 24, pw - 48
-    s.text(ix, py + 26, "COLOPHON", "mono", 9.5, t["muted"], tracking=2.3,
+    s.text(ix, py + 24, "COLOPHON", "mono", 9.5, t["muted"], tracking=2.3,
            cls="fade", style="animation-delay:.62s")
-    s.text(ix, py + 64, "Full-stack developer,", "serif", 19, t["ink"],
+    s.text(ix, py + 62, "Full-stack developer,", "serif", 19, t["ink"],
            cls="riseSm", style="animation-delay:.7s", maxw=iw, where="hero/col1")
-    s.text(ix, py + 88, "backend lead.", "serif", 19, t["ink"],
+    s.text(ix, py + 86, "backend lead.", "serif", 19, t["ink"],
            cls="riseSm", style="animation-delay:.76s", maxw=iw, where="hero/col2")
-    s.line(ix, py + 108, ix + iw, py + 108, t["border"], 1, cls="draw",
+    s.line(ix, py + 104, ix + iw, py + 104, t["border"], 1, cls="draw",
            style=f"--len:{iw};animation-delay:.85s", extra=f'stroke-dasharray="{iw}"')
-    y = py + 136
+    y = py + 130
     for txt in ("PATOLIYA INFOTECH · SINCE JUN 2025", "MSC CS & IT · JAIN UNIVERSITY",
                 "REMOTE-FRIENDLY · 30-DAY NOTICE"):
         s.text(ix, y, txt, "mono", 9.5, t["muted"], tracking=1.15,
                cls="fade", style="animation-delay:.95s", maxw=iw, where="hero/colophon")
         y += 21
-    s.text(ix, py + 222, P["site"] + " ↗", "mono", 11.5, t["accent"], tracking=1.2,
-           cls="riseSm", style="animation-delay:1.05s", maxw=iw - 110, where="hero/site")
-    s.text(ix + iw, py + 222, f'{d["total"]} COMMITS / YR', "mono", 9.5, t["muted"],
-           tracking=1.15, anchor="end", cls="fade", style="animation-delay:1.15s")
+    s.text(ix, py + 194, f'{d["total"]} CONTRIBUTIONS / YR', "mono", 9.5, t["muted"],
+           tracking=1.1, cls="fade", style="animation-delay:1.0s", maxw=iw,
+           where="hero/total")
+    s.text(ix, py + 220, P["site"] + " ↗", "mono", 11.5, t["accent"], tracking=1.2,
+           cls="riseSm", style="animation-delay:1.1s", maxw=iw, where="hero/site")
     return s
 
 
