@@ -40,17 +40,20 @@ ONLY_THEME = os.environ.get("THEME")
 
 # ── palette: mirrors app/globals.css from the portfolio ───────────────────────
 THEMES = {
+    # borders and empty cells carry the card on their own: GitHub's dark page is
+    # #0d1117, so a near-black card needs a frame that reads (≈1.7:1) and an
+    # empty grid cell that is visibly a cell, not page showing through.
     "light": dict(
-        bg="#FAFAF6", ink="#101010", muted="#6E6D66", border="#E7E6DF",
+        bg="#FAFAF6", ink="#101010", muted="#6E6D66", border="#DDDBD2",
         surface="#FFFFFF", accent="#1D33D8", on_accent="#FAFAF6",
         tile_ink_bg="#101010", tile_ink_fg="#FAFAF6",
-        ramp=["#E7E6DF", "#C3C9F4", "#8A97EC", "#4C60E4", "#1D33D8"],
+        ramp=["#E3E0D6", "#B9C2F2", "#7E8DEA", "#4256E2", "#1D33D8"],
     ),
     "dark": dict(
-        bg="#0E0E0C", ink="#F2F1EA", muted="#8F8E83", border="#232320",
-        surface="#151512", accent="#8B9CFF", on_accent="#0E0E0C",
+        bg="#0E0E0C", ink="#F2F1EA", muted="#9A998D", border="#3B3B33",
+        surface="#1B1B17", accent="#8B9CFF", on_accent="#0E0E0C",
         tile_ink_bg="#F2F1EA", tile_ink_fg="#0E0E0C",
-        ramp=["#26261F", "#31365A", "#4C5AA8", "#6C7DEE", "#8B9CFF"],
+        ramp=["#2E2E28", "#38428A", "#5566C8", "#7285F2", "#8B9CFF"],
     ),
 }
 

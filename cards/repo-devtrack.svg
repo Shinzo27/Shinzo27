@@ -25,13 +25,13 @@ text{transform-box:fill-box;}
 </style>
 <defs></defs>
 <rect width="276" height="130" rx="8" fill="#FAFAF6"/>
-<rect x="0.5" y="0.5" width="275" height="129" rx="8" fill="none" stroke="#E7E6DF"/>
+<rect x="0.5" y="0.5" width="275" height="129" rx="8" fill="none" stroke="#DDDBD2"/>
 <rect width="276" height="130" rx="10" fill="#FAFAF6"/>
 <rect width="270" height="130" rx="10" fill="#FFFFFF"/>
-<rect x="0.5" y="0.5" width="269" height="129" rx="10" fill="none" stroke="#E7E6DF"/>
+<rect x="0.5" y="0.5" width="269" height="129" rx="10" fill="none" stroke="#DDDBD2"/>
 <g class="riseSm" style="animation-delay:2.39s">
 <text x="20.0" y="28.0" font-family="mono" font-size="9.5" fill="#6E6D66" letter-spacing="1.400">JAVASCRIPT</text>
-<text x="100.6" y="28.0" font-family="mono" font-size="9.5" fill="#E7E6DF" letter-spacing="1.400">·</text>
+<text x="100.6" y="28.0" font-family="mono" font-size="9.5" fill="#DDDBD2" letter-spacing="1.400">·</text>
 <text x="106.6" y="28.0" font-family="mono" font-size="9.5" fill="#6E6D66" letter-spacing="1.400">2024</text>
 <text x="20.0" y="62.0" font-family="serif" font-size="24" fill="#101010" letter-spacing="-0.300">DevTrack</text>
 <text x="20.0" y="88.0" font-family="mono" font-size="9.5" fill="#6E6D66">Team project tracker — Express API,</text>

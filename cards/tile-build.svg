@@ -25,7 +25,7 @@ text{transform-box:fill-box;}
 </style>
 <defs><clipPath id="clip-tile-build"><rect x="14" y="66" width="230" height="56"/></clipPath></defs>
 <rect width="276" height="218" rx="8" fill="#FAFAF6"/>
-<rect x="0.5" y="0.5" width="275" height="217" rx="8" fill="none" stroke="#E7E6DF"/>
+<rect x="0.5" y="0.5" width="275" height="217" rx="8" fill="none" stroke="#DDDBD2"/>
 <rect width="276" height="218" rx="10" fill="#FAFAF6"/>
 <rect width="270" height="218" rx="10" fill="#1D33D8"/>
 <g style="animation:swing .85s cubic-bezier(.2,.9,.3,1) 1.35s both;transform-origin:center 82%">

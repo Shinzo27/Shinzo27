@@ -25,10 +25,10 @@ text{transform-box:fill-box;}
 </style>
 <defs><clipPath id="clip-tile-craft"><rect x="14" y="66" width="230" height="56"/></clipPath></defs>
 <rect width="276" height="218" rx="8" fill="#FAFAF6"/>
-<rect x="0.5" y="0.5" width="275" height="217" rx="8" fill="none" stroke="#E7E6DF"/>
+<rect x="0.5" y="0.5" width="275" height="217" rx="8" fill="none" stroke="#DDDBD2"/>
 <rect width="276" height="218" rx="10" fill="#FAFAF6"/>
 <rect width="270" height="218" rx="10" fill="#FFFFFF"/>
-<rect x="0.5" y="0.5" width="269" height="217" rx="10" fill="none" stroke="#E7E6DF"/>
+<rect x="0.5" y="0.5" width="269" height="217" rx="10" fill="none" stroke="#DDDBD2"/>
 <g style="animation:swing .85s cubic-bezier(.2,.9,.3,1) 1.51s both;transform-origin:center 82%">
 <text x="20.0" y="30.0" font-family="mono" font-size="9.5" fill="#6E6D66" letter-spacing="1.700">02 / AI-NATIVE</text>
 <g clip-path="url(#clip-tile-craft)"><g style="--roll:-224px;transform:translateY(-224px);animation:count .95s steps(5, jump-none) 2.01s both"><text x="20" y="107" font-family="serif" font-size="54" fill="#101010">00</text><text x="20" y="163" font-family="serif" font-size="54" fill="#101010">01</text><text x="20" y="219" font-family="serif" font-size="54" fill="#101010">02</text><text x="20" y="275" font-family="serif" font-size="54" fill="#101010">03</text><text x="20" y="331" font-family="serif" font-size="54" fill="#101010">04</text></g></g>

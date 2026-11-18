@@ -25,54 +25,54 @@ text{transform-box:fill-box;}
 </style>
 <defs></defs>
 <rect width="860" height="247" rx="8" fill="#FAFAF6"/>
-<rect x="0.5" y="0.5" width="859" height="246" rx="8" fill="none" stroke="#E7E6DF"/>
+<rect x="0.5" y="0.5" width="859" height="246" rx="8" fill="none" stroke="#DDDBD2"/>
 <text x="34.0" y="40.0" font-family="mono" font-size="10.5" fill="#6E6D66" letter-spacing="2.000" class="fade" style="animation-delay:.1s">BY MONTH</text>
 <text x="826.0" y="40.0" font-family="mono" font-size="10.5" fill="#6E6D66" text-anchor="end" letter-spacing="2.000" class="fade" style="animation-delay:.1s">BEST · JUL · 142</text>
-<rect x="34.0" y="197.5" width="28" height="2.5" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.300s both"/>
+<rect x="34.0" y="197.5" width="28" height="2.5" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.300s both"/>
 <text x="48.0" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.40s">Dec</text>
-<rect x="77.8" y="196.7" width="28" height="3.3" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.355s both"/>
+<rect x="77.8" y="196.7" width="28" height="3.3" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.355s both"/>
 <text x="91.8" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.45s">Jan</text>
 <text x="91.8" y="188.7" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:0.70s">4</text>
-<rect x="121.6" y="186.7" width="28" height="13.3" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.410s both"/>
+<rect x="121.6" y="186.7" width="28" height="13.3" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.410s both"/>
 <text x="135.6" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.51s">Feb</text>
 <text x="135.6" y="178.7" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:0.76s">16</text>
-<rect x="165.4" y="196.7" width="28" height="3.3" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.465s both"/>
+<rect x="165.4" y="196.7" width="28" height="3.3" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.465s both"/>
 <text x="179.4" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.56s">Mar</text>
 <text x="179.4" y="188.7" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:0.81s">4</text>
-<rect x="209.2" y="195.0" width="28" height="5.0" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.520s both"/>
+<rect x="209.2" y="195.0" width="28" height="5.0" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.520s both"/>
 <text x="223.2" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.62s">Apr</text>
 <text x="223.2" y="187.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:0.87s">6</text>
-<rect x="253.0" y="195.0" width="28" height="5.0" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.575s both"/>
+<rect x="253.0" y="195.0" width="28" height="5.0" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.575s both"/>
 <text x="267.0" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.67s">May</text>
 <text x="267.0" y="187.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:0.92s">6</text>
-<rect x="296.8" y="196.7" width="28" height="3.3" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.630s both"/>
+<rect x="296.8" y="196.7" width="28" height="3.3" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.630s both"/>
 <text x="310.8" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.73s">Jun</text>
 <text x="310.8" y="188.7" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:0.98s">4</text>
 <rect x="340.6" y="82.0" width="28" height="118.0" rx="2" fill="#1D33D8" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.685s both"/>
 <text x="354.6" y="220.0" font-family="mono" font-size="9.5" fill="#101010" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.79s">Jul</text>
 <text x="354.6" y="74.0" font-family="mono" font-size="9.5" fill="#1D33D8" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.04s">142</text>
-<rect x="384.4" y="88.6" width="28" height="111.4" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.740s both"/>
+<rect x="384.4" y="88.6" width="28" height="111.4" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.740s both"/>
 <text x="398.4" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.84s">Aug</text>
 <text x="398.4" y="80.6" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.09s">134</text>
-<rect x="428.2" y="161.8" width="28" height="38.2" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.795s both"/>
+<rect x="428.2" y="161.8" width="28" height="38.2" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.795s both"/>
 <text x="442.2" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.89s">Sep</text>
 <text x="442.2" y="153.8" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.15s">46</text>
-<rect x="472.0" y="182.5" width="28" height="17.5" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.850s both"/>
+<rect x="472.0" y="182.5" width="28" height="17.5" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.850s both"/>
 <text x="486.0" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:0.95s">Oct</text>
 <text x="486.0" y="174.5" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.20s">21</text>
-<rect x="515.8" y="106.9" width="28" height="93.1" rx="2" fill="#E7E6DF" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.905s both"/>
+<rect x="515.8" y="106.9" width="28" height="93.1" rx="2" fill="#DDDBD2" class="grow" style="animation:grow .62s cubic-bezier(.2,.75,.3,1) 0.905s both"/>
 <text x="529.8" y="220.0" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.800" class="fade" style="animation-delay:1.01s">Nov</text>
 <text x="529.8" y="98.9" font-family="mono" font-size="9.5" fill="#6E6D66" text-anchor="middle" letter-spacing="0.500" class="pop" style="animation-delay:1.25s">112</text>
 <line x1="34.0" y1="200.0" x2="543.8" y2="200.0" stroke="#101010" stroke-width="1.2" class="draw" style="--len:525.5999999999999;animation-delay:.2s" stroke-dasharray="525.5999999999999"/>
-<line x1="586.0" y1="40.0" x2="586.0" y2="218.0" stroke="#E7E6DF" stroke-width="1" class="draw" style="--len:178;animation-delay:.5s" stroke-dasharray="178"/>
+<line x1="586.0" y1="40.0" x2="586.0" y2="218.0" stroke="#DDDBD2" stroke-width="1" class="draw" style="--len:178;animation-delay:.5s" stroke-dasharray="178"/>
 <text x="620.0" y="80.0" font-family="serif" font-size="30" fill="#101010" class="riseSm" style="animation-delay:0.55s">04</text>
 <text x="664.0" y="65.0" font-family="mono" font-size="9.5" fill="#6E6D66" letter-spacing="1.500" class="fade" style="animation-delay:0.60s">CURRENT STREAK</text>
 <text x="664.0" y="81.0" font-family="mono" font-size="9.5" fill="#1D33D8" letter-spacing="1.150" class="fade" style="animation-delay:0.66s">20 DAYS BEST</text>
-<line x1="620.0" y1="105.0" x2="826.0" y2="105.0" stroke="#E7E6DF" stroke-width="1" class="draw" style="--len:206;animation-delay:0.70s" stroke-dasharray="206"/>
+<line x1="620.0" y1="105.0" x2="826.0" y2="105.0" stroke="#DDDBD2" stroke-width="1" class="draw" style="--len:206;animation-delay:0.70s" stroke-dasharray="206"/>
 <text x="620.0" y="142.0" font-family="serif" font-size="30" fill="#101010" class="riseSm" style="animation-delay:0.67s">20</text>
 <text x="664.0" y="127.0" font-family="mono" font-size="9.5" fill="#6E6D66" letter-spacing="1.500" class="fade" style="animation-delay:0.72s">LONGEST STREAK</text>
 <text x="664.0" y="143.0" font-family="mono" font-size="9.5" fill="#1D33D8" letter-spacing="1.150" class="fade" style="animation-delay:0.78s">AUG 2026</text>
-<line x1="620.0" y1="167.0" x2="826.0" y2="167.0" stroke="#E7E6DF" stroke-width="1" class="draw" style="--len:206;animation-delay:0.82s" stroke-dasharray="206"/>
+<line x1="620.0" y1="167.0" x2="826.0" y2="167.0" stroke="#DDDBD2" stroke-width="1" class="draw" style="--len:206;animation-delay:0.82s" stroke-dasharray="206"/>
 <text x="620.0" y="204.0" font-family="serif" font-size="30" fill="#101010" class="riseSm" style="animation-delay:0.79s">33</text>
 <text x="664.0" y="189.0" font-family="mono" font-size="9.5" fill="#6E6D66" letter-spacing="1.500" class="fade" style="animation-delay:0.84s">BUSIEST DAY</text>
 <text x="664.0" y="205.0" font-family="mono" font-size="9.5" fill="#1D33D8" letter-spacing="1.150" class="fade" style="animation-delay:0.90s">THURSDAY</text>
