@@ -26,7 +26,7 @@ Full-stack developer at **Patoliya Infotech**, leading backend on an active prod
   <img src="./cards/activity.svg" alt="Contributions by month with streak stats" width="100%">
 </picture>
 
-<a href="https://www.prathampatel.in/#projects"><img src="./cards/tile-build.svg" width="32.5%" alt="Build — two products in production"></a><a href="https://www.prathampatel.in/#workflow"><img src="./cards/tile-craft.svg" width="32.5%" alt="AI-native — four steps: frame, delegate, review, ship"></a><a href="https://www.prathampatel.in/#now"><img src="./cards/tile-learn.svg" width="32.5%" alt="Learning — React Native and Expo, AI-natively"></a>
+<a href="https://www.prathampatel.in/#projects"><img src="./cards/tile-build.svg" width="33.33%" alt="Build — two products in production"></a><a href="https://www.prathampatel.in/#workflow"><img src="./cards/tile-craft.svg" width="33.33%" alt="AI-native — four steps: frame, delegate, review, ship"></a><a href="https://www.prathampatel.in/#now"><img src="./cards/tile-learn.svg" width="33.33%" alt="Learning — React Native and Expo, AI-natively"></a>
 
 ### selected work
 
@@ -47,7 +47,7 @@ infra       Docker · AWS · Nginx · GitHub Actions · Vercel
 craft       system design · evals · CI/CD · validation at boundaries
 ```
 
-<a href="https://github.com/Shinzo27/LearnLive"><img src="./cards/repo-learnlive.svg" width="32.5%" alt="LearnLive — course platform with live sessions"></a><a href="https://github.com/Shinzo27/Grocery-Store"><img src="./cards/repo-grocery.svg" width="32.5%" alt="Grocery-Store — MERN storefront"></a><a href="https://github.com/Shinzo27/DevTrack"><img src="./cards/repo-devtrack.svg" width="32.5%" alt="DevTrack — team project tracker"></a>
+<a href="https://github.com/Shinzo27/LearnLive"><img src="./cards/repo-learnlive.svg" width="33.33%" alt="LearnLive — course platform with live sessions"></a><a href="https://github.com/Shinzo27/Grocery-Store"><img src="./cards/repo-grocery.svg" width="33.33%" alt="Grocery-Store — MERN storefront"></a><a href="https://github.com/Shinzo27/DevTrack"><img src="./cards/repo-devtrack.svg" width="33.33%" alt="DevTrack — team project tracker"></a>
 
 ### connect
 

@@ -365,19 +365,24 @@ text{transform-box:fill-box;}
 
 # ── cards ────────────────────────────────────────────────────────────────────
 # Cards are drawn at the width GitHub actually renders them: the markdown
-# column is 815–1012px depending on the window, and three cards at 32.5% are
-# 270–330px. So type is sized against ~860 / ~270 and arrives close to 1:1
-# instead of being shrunk into illegibility.
+# column is 815–1012px, and three cards at 33.33% are 270–337px. So type is
+# sized against ~860 / ~270 and arrives close to 1:1 instead of being shrunk
+# into illegibility.
+#
+# One spacing token: PAD top/left/right, 24 below the last baseline. One mono
+# size for micro-labels (9.5), one for section heads (10.5).
 W = 860
 PAD = 34
-TILE_W, TILE_H = 270, 208
-REPO_W, REPO_H = 270, 140
+BOTTOM = 24
+TILE_W, TILE_H, GUTTER = 276, 218, 6
+REPO_W, REPO_H = 276, 130
+MONO_SM, MONO = 9.5, 10.5
 
 
 def card_hero(t: dict, d: dict) -> Svg:
-    s = Svg(W, 346, t)
-    left_w = 430
+    s = Svg(W, 348, t)
     NAME = 96
+    left_w = 430
 
     s.raw(
         f'<g class="fade" style="animation-delay:.05s">'
@@ -386,11 +391,12 @@ def card_hero(t: dict, d: dict) -> Svg:
         f'style="transform-origin:center;animation:pulse 2.6s ease-in-out 1.4s infinite"/>'
         f"</g>"
     )
-    s.text(PAD + 15, 46, "SURAT, GUJARAT · IST · OPEN TO AI-NATIVE ROLES", "mono", 10.5,
+    s.text(PAD + 15, 46, "SURAT, GUJARAT · IST · OPEN TO AI-NATIVE ROLES", "mono", MONO,
            t["muted"], tracking=1.6, cls="fade", style="animation-delay:.15s",
            maxw=left_w, where="hero/eyebrow")
 
     # the name rises one line at a time; a blue band sweeps the surname
+    name_w = measure(P["name1"], "serif", NAME, -1.2)
     s.text(PAD - 3, 144, P["name1"], "serif", NAME, t["ink"], tracking=-1.2,
            cls="rise", style="animation-delay:.22s", maxw=left_w + 40, where="hero/name1")
     s.add_def(
@@ -413,36 +419,41 @@ def card_hero(t: dict, d: dict) -> Svg:
         f'style="animation:sweep 5.6s cubic-bezier(.5,0,.3,1) 2.2s infinite"/></g>'
     )
 
-    s.line(PAD, 270, PAD + 286, 270, t["ink"], 1.4, cls="draw",
-           style="--len:286;animation-delay:.7s", extra='stroke-dasharray="286"')
+    # the rule is the width of the name, so it measures something
+    s.line(PAD, 270, PAD + name_w, 270, t["ink"], 1.4, cls="draw",
+           style=f"--len:{name_w:.0f};animation-delay:.7s",
+           extra=f'stroke-dasharray="{name_w:.0f}"')
     s.text(PAD, 300, "AI-native full-stack developer.", "serif", 23, t["ink"],
            cls="riseSm", style="animation-delay:.8s", maxw=left_w, where="hero/tagline")
-    s.text(PAD, 322, "SPEC → DELEGATE → REVIEW → SHIP", "mono", 10, t["muted"],
+    s.text(PAD, 320, "SPEC → DELEGATE → REVIEW → SHIP", "mono", MONO_SM, t["muted"],
            tracking=1.5, cls="riseSm", style="animation-delay:.92s",
            maxw=left_w, where="hero/flow")
 
-    px, py, pw, ph = 500, 34, W - PAD - 500, 236
+    # colophon: top aligned to the eyebrow's cap height, bottom to the flow line
+    px, py, pw, ph = 500, 34, W - PAD - 500, 286
     s.rect(px, py, pw, ph, fill=t["surface"], rx=6, stroke=t["border"], sw=1,
            cls="fade", style="animation-delay:.5s")
     ix, iw = px + 24, pw - 48
-    s.text(ix, py + 24, "COLOPHON", "mono", 9.5, t["muted"], tracking=2.3,
+    s.text(ix, 46, "COLOPHON", "mono", MONO, t["muted"], tracking=2.2,
            cls="fade", style="animation-delay:.62s")
-    s.text(ix, py + 62, "Full-stack developer,", "serif", 19, t["ink"],
+    s.text(ix, py + 52, "Full-stack developer,", "serif", 19, t["ink"],
            cls="riseSm", style="animation-delay:.7s", maxw=iw, where="hero/col1")
-    s.text(ix, py + 86, "backend lead.", "serif", 19, t["ink"],
+    s.text(ix, py + 76, "backend lead.", "serif", 19, t["ink"],
            cls="riseSm", style="animation-delay:.76s", maxw=iw, where="hero/col2")
-    s.line(ix, py + 104, ix + iw, py + 104, t["border"], 1, cls="draw",
-           style=f"--len:{iw};animation-delay:.85s", extra=f'stroke-dasharray="{iw}"')
-    y = py + 130
+    for i, y in enumerate((132, 224)):
+        s.line(ix, py + y, ix + iw, py + y, t["border"], 1, cls="draw",
+               style=f"--len:{iw};animation-delay:{.85 + i * .1:.2f}s",
+               extra=f'stroke-dasharray="{iw}"')
+    y = py + 126
     for txt in ("PATOLIYA INFOTECH · SINCE JUN 2025", "MSC CS & IT · JAIN UNIVERSITY",
                 "REMOTE-FRIENDLY · 30-DAY NOTICE"):
-        s.text(ix, y, txt, "mono", 9.5, t["muted"], tracking=1.15,
+        s.text(ix, y, txt, "mono", MONO_SM, t["muted"], tracking=1.15,
                cls="fade", style="animation-delay:.95s", maxw=iw, where="hero/colophon")
         y += 21
-    s.text(ix, py + 194, f'{d["total"]} CONTRIBUTIONS / YR', "mono", 9.5, t["muted"],
+    s.text(ix, py + 214, f'{d["total"]} CONTRIBUTIONS / YR', "mono", MONO_SM, t["muted"],
            tracking=1.1, cls="fade", style="animation-delay:1.0s", maxw=iw,
            where="hero/total")
-    s.text(ix, py + 220, P["site"] + " ↗", "mono", 11.5, t["accent"], tracking=1.2,
+    s.text(ix, py + 262, P["site"] + " ↗", "mono", MONO, t["accent"], tracking=1.2,
            cls="riseSm", style="animation-delay:1.1s", maxw=iw, where="hero/site")
     return s
 
@@ -450,9 +461,9 @@ def card_hero(t: dict, d: dict) -> Svg:
 def card_graph(t: dict, d: dict) -> Svg:
     days: dict[str, int] = d["days"]
     keys = sorted(days)
-    s = Svg(W, 242, t)
+    s = Svg(W, 248, t)
 
-    s.text(PAD, 40, "CONTRIBUTIONS · LAST 12 MONTHS", "mono", 10.5, t["muted"],
+    s.text(PAD, 40, "CONTRIBUTIONS · LAST 12 MONTHS", "mono", MONO, t["muted"],
            tracking=2.0, cls="fade", style="animation-delay:.1s", maxw=420, where="graph/head")
 
     cell, gap = 10.8, 4.14
@@ -476,21 +487,22 @@ def card_graph(t: dict, d: dict) -> Svg:
             f'class="cell" style="animation:cellIn .42s ease-out {delay:.3f}s both"/>'
         )
 
-    gy = grid_y + 7 * pitch
-    lx = W - PAD - 5 * (cell + 3) - 46
-    s.text(lx - 10, 40, "LESS", "mono", 9, t["muted"], tracking=1.3, anchor="end",
+    # legend drawn at the same scale as the grid it explains
+    lx = W - PAD - 5 * pitch + gap - 46
+    s.text(lx - 10, 40, "LESS", "mono", MONO_SM, t["muted"], tracking=1.3, anchor="end",
            cls="fade", style="animation-delay:.9s")
     for i in range(5):
         s.raw(
-            f'<rect x="{lx + i * (cell + 3):.1f}" y="31" width="{cell * .82:.1f}" '
-            f'height="{cell * .82:.1f}" rx="2" fill="{t["ramp"][i]}" class="fade" '
+            f'<rect x="{lx + i * pitch:.1f}" y="31" width="{cell}" height="{cell}" '
+            f'rx="2.2" fill="{t["ramp"][i]}" class="fade" '
             f'style="animation-delay:{.9 + i * .05:.2f}s"/>'
         )
-    s.text(lx + 5 * (cell + 3) + 4, 40, "MORE", "mono", 9, t["muted"], tracking=1.3,
+    s.text(lx + 5 * pitch - gap + 4, 40, "MORE", "mono", MONO_SM, t["muted"], tracking=1.3,
            cls="fade", style="animation-delay:1.2s")
 
-    y = gy + 42
-    x = PAD
+    # four stats on one baseline, spread across the full column
+    y = 204
+    step = (W - 2 * PAD) / 4
     stats = [
         (f'{d["total"]}', "CONTRIBUTIONS"),
         (f'{d["active_days"]}', "ACTIVE DAYS"),
@@ -498,43 +510,44 @@ def card_graph(t: dict, d: dict) -> Svg:
         (f'{d["busiest_count"]}', "BEST DAY · " + _md(d["busiest_day"])),
     ]
     for i, (val, label) in enumerate(stats):
-        w = s.text(x, y, val, "serif", 28, t["ink"], cls="riseSm",
-                   style=f"animation-delay:{1.05 + i * .08:.2f}s")
-        s.text(x, y + 17, label, "mono", 9, t["muted"], tracking=1.4, cls="fade",
-               style=f"animation-delay:{1.15 + i * .08:.2f}s")
-        x += max(w, measure(label, "mono", 9, 1.4)) + 40
+        s.text(PAD + i * step, y, val, "serif", 30, t["ink"], cls="riseSm",
+               style=f"animation-delay:{1.05 + i * .08:.2f}s")
+        s.text(PAD + i * step, y + 17, label, "mono", MONO_SM, t["muted"], tracking=1.4,
+               cls="fade", style=f"animation-delay:{1.15 + i * .08:.2f}s")
     return s
 
 
 def card_activity(t: dict, d: dict) -> Svg:
     months = d["months"][-12:]
-    s = Svg(W, 276, t)
-    s.text(PAD, 40, "BY MONTH", "mono", 10.5, t["muted"], tracking=2.0,
+    s = Svg(W, 247, t)
+    s.text(PAD, 40, "BY MONTH", "mono", MONO, t["muted"], tracking=2.0,
            cls="fade", style="animation-delay:.1s")
     best = max(months, key=lambda m: m["value"])
-    s.text(W - PAD, 40, f"BEST · {best['label'].upper()} · {best['value']}", "mono", 10.5,
+    s.text(W - PAD, 40, f"BEST · {best['label'].upper()} · {best['value']}", "mono", MONO,
            t["muted"], tracking=2.0, anchor="end", cls="fade", style="animation-delay:.1s")
 
     bx0, bw, bgap = PAD, 28, 15.8
     pitch = bw + bgap
-    baseline, maxh = 210, 120
+    baseline, maxh = 200, 118
+    top_v = best["value"] or 1
     for i, m in enumerate(months):
-        h = max(2.0, m["value"] / (best["value"] or 1) * maxh)
+        h = max(2.5, m["value"] / top_v * maxh)
         x = bx0 + i * pitch
-        top = m["month"] == best["month"]
-        fill = t["accent"] if top else t["border"]
+        best_here = m["month"] == best["month"]
         delay = 0.3 + i * 0.055
+        # the rect is already its true height: with motion off (or reduced) the
+        # chart still reads correctly, the animation only grows it into place
         s.raw(
-            f'<rect x="{x:.1f}" y="{baseline - maxh:.1f}" width="{bw}" height="{maxh:.1f}" '
-            f'rx="2" fill="{fill}" class="grow" '
+            f'<rect x="{x:.1f}" y="{baseline - h:.1f}" width="{bw}" height="{h:.1f}" '
+            f'rx="2" fill="{t["accent"] if best_here else t["border"]}" class="grow" '
             f'style="animation:grow .62s cubic-bezier(.2,.75,.3,1) {delay:.3f}s both"/>'
         )
-        s.text(x + bw / 2, baseline + 20, m["label"], "mono", 9.5,
-               t["ink"] if top else t["muted"], tracking=.8, anchor="middle",
+        s.text(x + bw / 2, baseline + 20, m["label"], "mono", MONO_SM,
+               t["ink"] if best_here else t["muted"], tracking=.8, anchor="middle",
                cls="fade", style=f"animation-delay:{delay + .1:.2f}s")
         if m["value"]:
-            s.text(x + bw / 2, baseline - h - 8, str(m["value"]), "mono", 9.5,
-                   t["accent"] if top else t["muted"], tracking=.5, anchor="middle",
+            s.text(x + bw / 2, baseline - h - 8, str(m["value"]), "mono", MONO_SM,
+                   t["accent"] if best_here else t["muted"], tracking=.5, anchor="middle",
                    cls="pop", style=f"animation-delay:{delay + .35:.2f}s")
 
     s.line(PAD, baseline, bx0 + len(months) * pitch - bgap, baseline, t["ink"], 1.2,
@@ -542,9 +555,8 @@ def card_activity(t: dict, d: dict) -> Svg:
            extra=f'stroke-dasharray="{len(months) * pitch}"')
 
     px = 620
-    s.line(px - 34, 62, px - 34, baseline, t["border"], 1, cls="draw",
-           style=f"--len:{baseline - 62};animation-delay:.5s",
-           extra=f'stroke-dasharray="{baseline - 62}"')
+    s.line(px - 34, 40, px - 34, 218, t["border"], 1, cls="draw",
+           style="--len:178;animation-delay:.5s", extra='stroke-dasharray="178"')
     rows = [
         (f'{d["current"]:02d}', "CURRENT STREAK", f'{d["longest"]} DAYS BEST'),
         (f'{d["longest"]:02d}', "LONGEST STREAK",
@@ -552,30 +564,27 @@ def card_activity(t: dict, d: dict) -> Svg:
         (f'{d["busiest_count"]:02d}', "BUSIEST DAY",
          datetime.strptime(d["busiest_day"], "%Y-%m-%d").strftime("%A").upper()),
     ]
-    y = 62
     for i, (val, label, sub) in enumerate(rows):
-        s.text(px, y + 26, val, "serif", 36, t["ink"], cls="riseSm",
+        top = 54 + i * 62
+        s.text(px, top + 26, val, "serif", 30, t["ink"], cls="riseSm",
                style=f"animation-delay:{.55 + i * .12:.2f}s")
-        s.text(px + 48, y + 11, label, "mono", 9, t["muted"], tracking=1.5,
+        s.text(px + 44, top + 11, label, "mono", MONO_SM, t["muted"], tracking=1.5,
                cls="fade", style=f"animation-delay:{.6 + i * .12:.2f}s")
-        s.text(px + 48, y + 27, sub, "mono", 9, t["accent"], tracking=1.15,
+        s.text(px + 44, top + 27, sub, "mono", MONO_SM, t["accent"], tracking=1.15,
                cls="fade", style=f"animation-delay:{.66 + i * .12:.2f}s")
         if i < 2:
-            s.line(px, y + 40, W - PAD, y + 40, t["border"], 1, cls="draw",
+            # the divider sits midway between the two blocks it separates
+            dy = top + 51
+            s.line(px, dy, W - PAD, dy, t["border"], 1, cls="draw",
                    style=f"--len:{W - PAD - px};animation-delay:{.7 + i * .12:.2f}s",
                    extra=f'stroke-dasharray="{W - PAD - px}"')
-        y += 62
-
-    s.raw(
-        f'<circle cx="{px + 250}" cy="75" r="2.8" fill="{t["accent"]}" '
-        f'style="transform-origin:center;animation:pulse 2.4s ease-in-out 1.6s infinite"/>'
-    )
     return s
 
 
 def card_tile(t: dict, tile: dict) -> Svg:
     w, h = TILE_W, TILE_H
     s = Svg(w, h, t)
+    cw = w - GUTTER  # the card, with a transparent gutter so 33.33% rows align
     kind = tile["kind"]
     if kind == "accent":
         bg, fg, sub, arrow = t["accent"], t["on_accent"], "rgba(250,250,246,.62)", t["on_accent"]
@@ -586,53 +595,52 @@ def card_tile(t: dict, tile: dict) -> Svg:
         bg, fg, sub, arrow = t["surface"], t["ink"], t["muted"], t["accent"]
 
     s.body.clear()
-    s.raw(f'<rect width="{w}" height="{h}" rx="10" fill="{bg}"/>')
+    s.raw(f'<rect width="{w}" height="{h}" rx="10" fill="{t["bg"]}"/>')
+    s.raw(f'<rect width="{cw}" height="{h}" rx="10" fill="{bg}"/>')
     if kind != "accent":
-        s.raw(f'<rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="10" fill="none" '
+        s.raw(f'<rect x="0.5" y="0.5" width="{cw - 1}" height="{h - 1}" rx="10" fill="none" '
               f'stroke="{t["border"]}"/>')
 
-    pad = 18
+    pad = 20
     s.raw(f'<g style="animation:swing .85s cubic-bezier(.2,.9,.3,1) {tile["delay"]:.2f}s both;'
           f'transform-origin:center 82%">')
-    s.text(pad, 27, f'{tile["index"]} / {tile["label"]}', "mono", 9.5, sub, tracking=1.7,
-           maxw=w - pad * 2, where=f'tile/{tile["file"]}/label')
+    s.text(pad, 30, f'{tile["index"]} / {tile["label"]}', "mono", MONO_SM, sub, tracking=1.7,
+           maxw=cw - pad * 2, where=f'tile/{tile["file"]}/label')
 
-    cap_y = 162
     if tile["count"] is not None:
-        n, roll, base = tile["count"], 52, 128
-        s.add_def(f'<clipPath id="clip-{tile["file"]}"><rect x="{pad - 6}" y="{base - 46}" '
-                  f'width="{w - pad * 2}" height="{roll}"/></clipPath>')
+        n, roll, base = tile["count"], 56, 107
+        s.add_def(f'<clipPath id="clip-{tile["file"]}"><rect x="{pad - 6}" y="{base - 41}" '
+                  f'width="{cw - pad * 2}" height="{roll}"/></clipPath>')
         stack = "".join(
-            f'<text x="{pad}" y="{base + roll * i}" font-family="serif" font-size="56" '
+            f'<text x="{pad}" y="{base + roll * i}" font-family="serif" font-size="54" '
             f'fill="{fg}">{i:02d}</text>' for i in range(n + 1)
         )
         s.track("".join(f"{i:02d}" for i in range(n + 1)))
-        if STATIC:
-            s.raw(f'<g clip-path="url(#clip-{tile["file"]})"><g '
-                  f'style="transform:translateY(-{roll * n}px)">{stack}</g></g>')
-        else:
-            s.raw(f'<g clip-path="url(#clip-{tile["file"]})"><g style="--roll:-{roll * n}px;'
-                  f'animation:count .95s steps({n + 1}, jump-none) '
-                  f'{tile["delay"] + .5:.2f}s both">{stack}</g></g>')
+        # the stack already sits on its last frame, so with motion off the
+        # number still reads 02 / 04 instead of 00
+        s.raw(f'<g clip-path="url(#clip-{tile["file"]})"><g style="--roll:-{roll * n}px;'
+              f'transform:translateY(-{roll * n}px);animation:count .95s '
+              f'steps({n + 1}, jump-none) {tile["delay"] + .5:.2f}s both">'
+              f'{stack}</g></g>')
     else:
-        s.raw(f'<circle cx="{pad + 7}" cy="96" r="6.6" fill="none" stroke="{t["accent"]}" '
+        s.raw(f'<circle cx="{pad + 7}" cy="87" r="6.6" fill="none" stroke="{t["accent"]}" '
               f'stroke-width="1.3" style="transform-origin:center;'
               f'animation:ring 2.8s ease-out {tile["delay"] + 1:.2f}s infinite"/>')
-        s.raw(f'<circle cx="{pad + 7}" cy="96" r="3" fill="{t["accent"]}" '
+        s.raw(f'<circle cx="{pad + 7}" cy="87" r="3" fill="{t["accent"]}" '
               f'style="transform-origin:center;animation:pulse 2.8s ease-in-out '
               f'{tile["delay"] + 1:.2f}s infinite"/>')
-        s.text(pad + 21, 100, "IN PROGRESS", "mono", 10.5, fg, tracking=1.6,
-               maxw=w - pad * 2 - 21, where=f'tile/{tile["file"]}/prog')
+        s.text(pad + 21, 91, "IN PROGRESS", "mono", MONO, fg, tracking=1.6,
+               maxw=cw - pad * 2 - 21, where=f'tile/{tile["file"]}/prog')
 
     for i, line_ in enumerate(tile["caption"]):
-        s.text(pad, cap_y + i * 19, line_, "serif", 16, fg,
-               maxw=w - pad * 2, where=f'tile/{tile["file"]}/cap')
-    s.text(pad, h - 16, tile["foot"], "mono", 9, sub, tracking=1.0,
-           maxw=w - pad * 2 - 20, where=f'tile/{tile["file"]}/foot')
+        s.text(pad, 152 + i * 18, line_, "serif", 16, fg,
+               maxw=cw - pad * 2, where=f'tile/{tile["file"]}/cap')
+    s.text(pad, 194, tile["foot"], "mono", MONO_SM, sub, tracking=1.0,
+           maxw=cw - pad * 2 - 22, where=f'tile/{tile["file"]}/foot')
 
     s.raw(f'<g style="transform-origin:center;animation:nudge 2.8s ease-in-out '
           f'{tile["delay"] + 1.3:.2f}s infinite">'
-          f'<path d="M{w - pad - 12} {h - 20} h10 m-4 -4 l4 4 l-4 4" fill="none" '
+          f'<path d="M{cw - pad - 12} 186 h10 m-4 -4 l4 4 l-4 4" fill="none" '
           f'stroke="{arrow}" stroke-width="1.4" stroke-linecap="round"/></g>')
     s.raw("</g>")
     return s
@@ -641,21 +649,23 @@ def card_tile(t: dict, tile: dict) -> Svg:
 def card_repo(t: dict, repo: dict) -> Svg:
     w, h = REPO_W, REPO_H
     s = Svg(w, h, t)
+    cw = w - GUTTER
     s.body.clear()
-    s.raw(f'<rect width="{w}" height="{h}" rx="10" fill="{t["surface"]}"/>')
-    s.raw(f'<rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="10" fill="none" '
+    s.raw(f'<rect width="{w}" height="{h}" rx="10" fill="{t["bg"]}"/>')
+    s.raw(f'<rect width="{cw}" height="{h}" rx="10" fill="{t["surface"]}"/>')
+    s.raw(f'<rect x="0.5" y="0.5" width="{cw - 1}" height="{h - 1}" rx="10" fill="none" '
           f'stroke="{t["border"]}"/>')
-    pad = 18
+    pad = 20
     s.raw(f'<g class="riseSm" style="animation-delay:{repo["delay"]:.2f}s">')
-    lw = s.text(pad, 26, repo["lang"], "mono", 9, t["muted"], tracking=1.4)
-    s.text(pad + lw + 11, 26, "·", "mono", 9, t["border"], tracking=1.4)
-    s.text(pad + lw + 17, 26, repo["year"], "mono", 9, t["muted"], tracking=1.4)
-    s.text(pad, 60, repo["name"], "serif", 24, t["ink"], tracking=-.3,
-           maxw=w - pad * 2 - 18, where=f'repo/{repo["file"]}')
+    lw = s.text(pad, 28, repo["lang"], "mono", MONO_SM, t["muted"], tracking=1.4)
+    s.text(pad + lw + 11, 28, "·", "mono", MONO_SM, t["border"], tracking=1.4)
+    s.text(pad + lw + 17, 28, repo["year"], "mono", MONO_SM, t["muted"], tracking=1.4)
+    s.text(pad, 62, repo["name"], "serif", 24, t["ink"], tracking=-.3,
+           maxw=cw - pad * 2 - 18, where=f'repo/{repo["file"]}')
     for i, line_ in enumerate(repo["desc"]):
-        s.text(pad, 84 + i * 16, line_, "mono", 9, t["muted"],
-               maxw=w - pad * 2, where=f'repo/{repo["file"]}/desc')
-    s.raw(f'<path d="M{w - pad - 13} {h - 18} h9 m-3.5 -3.5 l3.5 3.5 l-3.5 3.5" fill="none" '
+        s.text(pad, 88 + i * 16, line_, "mono", MONO_SM, t["muted"],
+               maxw=cw - pad * 2 - 16, where=f'repo/{repo["file"]}/desc')
+    s.raw(f'<path d="M{cw - pad - 13} {h - 16} h9 m-3.5 -3.5 l3.5 3.5 l-3.5 3.5" fill="none" '
           f'stroke="{t["accent"]}" stroke-width="1.4" stroke-linecap="round"/>')
     s.raw("</g>")
     return s
