@@ -627,14 +627,16 @@ def card_tile(t: dict, tile: dict) -> Svg:
               f'steps({n + 1}, jump-none) {tile["delay"] + .5:.2f}s both">'
               f'{stack}</g></g>')
     else:
-        s.raw(f'<circle cx="{pad + 7}" cy="87" r="6.6" fill="none" stroke="{t["accent"]}" '
+        # no counter here, so the band needs type at the same optical weight as
+        # the numerals beside it, sitting on the same baseline
+        s.raw(f'<circle cx="{pad + 7}" cy="97" r="6.6" fill="none" stroke="{t["accent"]}" '
               f'stroke-width="1.3" style="transform-origin:center;'
               f'animation:ring 2.8s ease-out {tile["delay"] + 1:.2f}s infinite"/>')
-        s.raw(f'<circle cx="{pad + 7}" cy="87" r="3" fill="{t["accent"]}" '
+        s.raw(f'<circle cx="{pad + 7}" cy="97" r="3" fill="{t["accent"]}" '
               f'style="transform-origin:center;animation:pulse 2.8s ease-in-out '
               f'{tile["delay"] + 1:.2f}s infinite"/>')
-        s.text(pad + 21, 91, "IN PROGRESS", "mono", MONO, fg, tracking=1.6,
-               maxw=cw - pad * 2 - 21, where=f'tile/{tile["file"]}/prog')
+        s.text(pad + 20, 107, "In progress", "serif", 30, fg,
+               maxw=cw - pad * 2 - 20, where=f'tile/{tile["file"]}/prog')
 
     for i, line_ in enumerate(tile["caption"]):
         s.text(pad, 152 + i * 18, line_, "serif", 16, fg,
