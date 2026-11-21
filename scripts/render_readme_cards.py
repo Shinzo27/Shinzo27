@@ -17,7 +17,7 @@ or two labels collide, so a bad data value can never ship a broken card.
 Where to edit:
   P       the name, links, and copy that appear inside the cards
   TILES   the three linked tiles (label, counter, caption, destination)
-  REPOS   the three featured repo cards
+  PROJECTS the three project cards under the toolkit
   THEMES  the palette — it mirrors --bg/--fg/--accent in the portfolio
 The README markdown holds the layout: one <picture> per full-width card and
 three `<a><img width="32.5%"></a>` per row, light and dark.
@@ -85,26 +85,27 @@ TILES = [
     ),
     dict(
         file="tile-learn", kind="ink", index="03", label="LEARNING",
-        count=None, caption=["React Native + Expo,", "learned AI-natively"], foot="HABIT TRACKER · SUPABASE · EAS",
+        count=None, caption=["MCP tool design, RAG", "retrieval and evals"],
+        foot="AGENTS · MCP · EVALS",
         href=P["site_url"] + "/#now",
     ),
 ]
 
-REPOS = [
+PROJECTS = [
     dict(
-        file="repo-learnlive", name="LearnLive", lang="TYPESCRIPT", year="2024",
-        desc=["Course platform with live sessions,", "RBAC, payments and progress."],
-        href="https://github.com/Shinzo27/LearnLive",
+        file="proj-shiftora", tag="SAAS", year="2026", name="Shiftora",
+        desc=["Auto-filled clinic rosters in 2s,", "attendance, swaps, RLS tenancy."],
+        href=P["site_url"] + "/#projects",
     ),
     dict(
-        file="repo-grocery", name="Grocery-Store", lang="TYPESCRIPT", year="2024",
-        desc=["MERN storefront with a Next admin,", "Redis cache, Docker on EC2."],
-        href="https://github.com/Shinzo27/Grocery-Store",
+        file="proj-intervue", tag="AI SAAS", year="2026", name="Intervue AI",
+        desc=["AI interviewer, permission-checked", "MCP tools, two-model scoring."],
+        href=P["site_url"] + "/#projects",
     ),
     dict(
-        file="repo-devtrack", name="DevTrack", lang="JAVASCRIPT", year="2024",
-        desc=["Team project tracker — Express API,", "React front end, docker-compose."],
-        href="https://github.com/Shinzo27/DevTrack",
+        file="proj-syncstream", tag="REALTIME", year="2024", name="SyncStream",
+        desc=["Music rooms synced over Redis", "pub/sub and Socket.IO."],
+        href=P["site_url"] + "/#projects",
     ),
 ]
 
@@ -650,6 +651,7 @@ def card_tile(t: dict, tile: dict) -> Svg:
 
 
 def card_repo(t: dict, repo: dict) -> Svg:
+    """A project card: tag + year, name, two mono lines, arrow."""
     w, h = REPO_W, REPO_H
     s = Svg(w, h, t)
     cw = w - GUTTER
@@ -660,7 +662,7 @@ def card_repo(t: dict, repo: dict) -> Svg:
           f'stroke="{t["border"]}"/>')
     pad = 20
     s.raw(f'<g class="riseSm" style="animation-delay:{repo["delay"]:.2f}s">')
-    lw = s.text(pad, 28, repo["lang"], "mono", MONO_SM, t["muted"], tracking=1.4)
+    lw = s.text(pad, 28, repo["tag"], "mono", MONO_SM, t["muted"], tracking=1.4)
     s.text(pad + lw + 11, 28, "·", "mono", MONO_SM, t["border"], tracking=1.4)
     s.text(pad + lw + 17, 28, repo["year"], "mono", MONO_SM, t["muted"], tracking=1.4)
     s.text(pad, 62, repo["name"], "serif", 24, t["ink"], tracking=-.3,
@@ -708,12 +710,13 @@ def main() -> int:
             s.check(f'{tile["file"]}{suffix}')
             payload[f'{tile["file"]}{suffix}.svg'] = (
                 s.render(tile["file"], f'{tile["label"]} — {tile["caption"][0]}'), .55)
-        for i, repo in enumerate(REPOS):
-            repo = dict(repo)
-            repo["delay"] = 2.15 + i * .12
-            s = card_repo(dict(t), repo)
-            s.check(f'{repo["file"]}{suffix}')
-            payload[f'{repo["file"]}{suffix}.svg'] = (s.render(repo["file"], repo["name"]), .55)
+        for i, proj in enumerate(PROJECTS):
+            proj = dict(proj)
+            proj["delay"] = 2.15 + i * .12
+            s = card_repo(dict(t), proj)
+            s.check(f'{proj["file"]}{suffix}')
+            payload[f'{proj["file"]}{suffix}.svg'] = (
+                s.render(proj["file"], f'{proj["name"]} — {proj["desc"][0]}'), .55)
 
         for fname, (svg, _) in payload.items():
             with open(os.path.join(CARDS, fname), "w", encoding="utf-8") as f:

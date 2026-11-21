@@ -12,7 +12,9 @@
 
 ### whoami
 
-Full-stack developer at **Patoliya Infotech**, leading backend on an active product: API design, schema decisions, code review. The rest of the day is AI-native development — I write the spec, delegate the implementation to agents (Cursor, Claude Code, Codex), then read every merged diff like my name is on it. Because it is.
+Full-stack developer at **Patoliya Infotech**, leading backend on an active product: API design, schema decisions, code review. [**Nirvitta**](https://www.nirvitta.in) — WhatsApp-first commerce, live and taking orders — and the AI systems below are mine end to end.
+
+The method is AI-native: I write the spec, delegate implementation to agents, then read every merged diff like my name is on it. Because it is.
 
 > strong validation · correct failure modes · typed end to end · fast without shipping mess
 
@@ -26,28 +28,23 @@ Full-stack developer at **Patoliya Infotech**, leading backend on an active prod
   <img src="./cards/activity.svg" alt="Contributions by month with streak stats" width="100%">
 </picture>
 
-<a href="https://www.prathampatel.in/#projects"><img src="./cards/tile-build.svg" width="33.33%" alt="Build — two products in production"></a><a href="https://www.prathampatel.in/#workflow"><img src="./cards/tile-craft.svg" width="33.33%" alt="AI-native — four steps: frame, delegate, review, ship"></a><a href="https://www.prathampatel.in/#now"><img src="./cards/tile-learn.svg" width="33.33%" alt="Learning — React Native and Expo, AI-natively"></a>
+<a href="https://www.prathampatel.in/#projects"><img src="./cards/tile-build.svg" width="33.33%" alt="Build — two products in production"></a><a href="https://www.prathampatel.in/#workflow"><img src="./cards/tile-craft.svg" width="33.33%" alt="AI-native — four steps: frame, delegate, review, ship"></a><a href="https://www.prathampatel.in/#now"><img src="./cards/tile-learn.svg" width="33.33%" alt="Learning — MCP tool design, RAG retrieval and evals"></a>
 
 ### selected work
 
-| | project | what it is | stack |
-|:--:|:---|:---|:---|
-| 01 | [**nirvitta**](https://www.nirvitta.in) | WhatsApp-first fashion commerce — conversational checkout instead of a cart, Payload CMS 3, migrations in the build | next · payload · neon · gsap |
-| 02 | **intervue-ai** | multi-tenant AI interview SaaS — permission-checked MCP tools, AI/HUMAN/SYSTEM audit trail, dual-model scoring that escalates disagreement | nest · prisma · mcp · bullmq |
-| 03 | [**portfolio**](https://www.prathampatel.in) | the site these cards are cut from — paper, ink, one blue | next 16 · tailwind 4 · gsap |
+<a href="https://www.prathampatel.in/#projects"><img src="./cards/proj-shiftora.svg" width="33.33%" alt="Shiftora — auto-filled clinic rosters, attendance, swaps"></a><a href="https://www.prathampatel.in/#projects"><img src="./cards/proj-intervue.svg" width="33.33%" alt="Intervue AI — AI interviewer with permission-checked MCP tools"></a><a href="https://www.prathampatel.in/#projects"><img src="./cards/proj-syncstream.svg" width="33.33%" alt="SyncStream — music rooms synced over Redis pub/sub"></a>
 
 ### toolkit
 
 ```
-frontend    React · Next.js · Tailwind · shadcn/ui · GSAP · Framer Motion
-backend     Node.js · Express · NestJS · REST · Socket.IO · RBAC
-data        PostgreSQL · Prisma · Redis · MongoDB · Neon · Supabase
-ai-native   Cursor · Claude Code · Codex · MCP · OpenAI API · RAG
-infra       Docker · AWS · Nginx · GitHub Actions · Vercel
-craft       system design · evals · CI/CD · validation at boundaries
+frontend     React · Next.js · Tailwind · shadcn/ui · GSAP · Framer Motion
+backend      Node.js · Express · NestJS · REST · Socket.IO · RBAC
+data         PostgreSQL · Prisma · Drizzle · Redis · MongoDB · Neon · Supabase
+ai-native    agentic workflows · MCP tool design · RAG · evals · prompt engineering
+ai-stack     Cursor · Claude Code · Codex · OpenAI · Anthropic · pgvector · BullMQ
+infra        Docker · AWS · Nginx · GitHub Actions · Vercel
+craft        system design · CI/CD · validation at boundaries · test-first review
 ```
-
-<a href="https://github.com/Shinzo27/LearnLive"><img src="./cards/repo-learnlive.svg" width="33.33%" alt="LearnLive — course platform with live sessions"></a><a href="https://github.com/Shinzo27/Grocery-Store"><img src="./cards/repo-grocery.svg" width="33.33%" alt="Grocery-Store — MERN storefront"></a><a href="https://github.com/Shinzo27/DevTrack"><img src="./cards/repo-devtrack.svg" width="33.33%" alt="DevTrack — team project tracker"></a>
 
 ### connect
 
