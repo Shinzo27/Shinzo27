@@ -84,15 +84,26 @@ def streaks(days: dict[str, int]) -> dict:
             cur = 0
         prev = d
 
-    # current streak counts back from the most recent day (today or yesterday)
+    # A streak is alive if it reaches today *or* yesterday: an empty cell for
+    # today (before you've committed) must not reset a run that just happened.
     today = date.today()
+    keys_desc = sorted(days, reverse=True)
+    if keys_desc:
+        newest = date.fromisoformat(keys_desc[0])
+        if (today - newest).days > 1:
+            keys_desc = []  # stale calendar: no live run to report
+        elif days[keys_desc[0]] == 0:
+            keys_desc = keys_desc[1:]  # skip an empty today
     live = 0
-    for k in reversed(sorted(days)):
-        d = date.fromisoformat(k)
-        if days.get(k, 0) > 0 and (today - d).days <= 1 + live:
-            live += 1
-        else:
+    prev = None
+    for k in keys_desc:
+        if days[k] == 0:
             break
+        d = date.fromisoformat(k)
+        if prev is not None and (prev - d).days != 1:
+            break
+        live += 1
+        prev = d
 
     active = sum(1 for v in days.values() if v)
     busiest = max(days.items(), key=lambda kv: (kv[1], kv[0])) if days else ("", 0)
